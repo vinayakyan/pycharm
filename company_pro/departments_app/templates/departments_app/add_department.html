@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Add Department</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" onsubmit="return validate_form();">
+        {% csrf_token %}
+        <h3 class="text-info"><strong>Add Department</strong></h3>
+        <div class="mb-3">
+            <label for="exampleInputDepartment" class="form-label">Department Name</label>
+            <input type="text" class="form-control" id="exampleInputDepartment" name="department_name" aria-describedby="emailHelp" required>
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDepartmentLocation" class="form-label">Department Location</label>
+            <input type="text" class="form-control" name="department_location" id="exampleInputDepartmentLocation" required>
+        </div>
+        <input type="submit" class="btn btn-primary">
+    </form>
+    <script type="text/javascript" src="{% static 'departments_app/validate.js' %}"></script>
+{% endblock %}

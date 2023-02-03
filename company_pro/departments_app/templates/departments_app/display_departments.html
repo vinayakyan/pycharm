@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Departments</title>
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+    <thead class="table-warning">
+      <tr>
+        <th>Id</th>
+        <th>Department</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody class="table-info">
+      {% for dept in data %}
+        <tr>
+          <th scope="row">{{dept.id}}</th>
+          <td>{{dept.department_name}}</td>
+          <td>{{dept.department_location}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Add Department</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" onsubmit="return validate_form()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 class="text-info"><strong>Add Employee</strong></h3>
+        <div class="mb-3">
+            <label for="exampleInputEmployee" class="form-label">Employee Name</label>
+            <input type="text" class="form-control" id="exampleInputEmployee" name="name" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDesignation" class="form-label">Designation</label>
+            <input type="text" class="form-control" name="designation" id="exampleInputDesignation" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDepartment" class="form-label">Department</label>
+            <select id="exampleInputDepartment" class="form-control" name="dept">
+                <option value="" selected>-----</option>
+                {% for ele in depts %}
+                <option value="{{ele.id}}">{{ele.id}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPan" class="form-label">Pan Card</label>
+            <input type="file" class="form-control" name="pan" id="exampleInputPan" onchange="validate_files();" required>
+            <p class="text-danger" id="errPan"><strong></strong></p>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputVoter" class="form-label">Voter Id</label>
+            <input type="file" class="form-control" name="voter" id="exampleInputVoter" onchange="validate_files();" required>
+            <p class="text-danger" id="errVoter"><strong></strong></p>
+        </div>
+        <input type="submit" class="btn btn-primary" id="submit">
+    </form>
+    <script type="text/javascript" src="{% static 'departments_app/my_functions.js' %}"></script>
+{% endblock %}
